@@ -1,33 +1,59 @@
-# Comedy Cellar Lineup Scraper
+# Comedy Data Analysis Project
 
-A comprehensive Python scraper for extracting historical lineup data from the Comedy Cellar website (2020-2025).
+A comprehensive system for scraping Comedy Cellar lineup data and enhancing it with Instagram follower information.
 
-## Features
+## 🎯 Project Overview
 
-- Scrapes all past lineups from Comedy Cellar's New York locations
-- Extracts comedian information including names, descriptions, and websites
-- Captures show details like times, venues, and dates
-- Exports data to multiple CSV formats for analysis
-- Respectful scraping with rate limiting and error handling
-- Comprehensive logging for monitoring progress
+This project combines two powerful data collection systems:
+1. **Comedy Cellar Scraper**: Extracts historical comedian lineup data
+2. **Instagram Follower Extractor**: Finds Instagram profiles and follower counts using Google Search API
 
-## Quick Start
+## 📋 Prerequisites
 
-1. **Install dependencies:**
-   ```bash
-   pip install requests pandas beautifulsoup4
+### Required Python Packages
+```bash
+pip install requests beautifulsoup4 pandas python-dotenv
+```
+
+### API Setup
+1. **Google Custom Search API**: 
+   - Get API key from [Google Cloud Console](https://console.cloud.google.com/)
+   - Create Custom Search Engine at [programmablesearchengine.google.com](https://programmablesearchengine.google.com/)
+   - Enable "Search the entire web" option
+
+2. **Environment Variables** (create `.env` file):
+   ```
+   GOOGLE_API_KEY=your_google_api_key_here
+   GOOGLE_CSE_ID=your_custom_search_engine_id_here
    ```
 
-2. **Run the scraper:**
-   ```bash
-   python run_scraper.py
-   ```
+## 🚀 Quick Start
 
-3. **Choose your option:**
-   - Full scrape (2020-2025): ~45 minutes, comprehensive dataset
-   - Recent scrape (last 6 months): ~5 minutes, recent data
-   - Specific year: Custom year between 2020-2025
-   - Custom options: Run with full customization
+### Option 1: Complete Pipeline (Recommended)
+Run everything in one command:
+```bash
+python enhance_with_instagram.py --pipeline
+```
+
+### Option 2: Step by Step
+
+#### Step 1: Scrape Comedy Cellar Data
+```bash
+python Lineup_scraper.py
+```
+This creates CSV files with show and comedian data.
+
+#### Step 2: Add Instagram Data
+```bash
+python enhance_with_instagram.py --auto
+```
+This automatically finds the latest comedian data and enhances it.
+
+### Option 3: Test First
+Test the Instagram extraction with sample data:
+```bash
+python test_instagram_extractor.py
+```
 
 ## Output Files
 
